@@ -4,3 +4,7 @@
 ## Pacotes necessários 
 1. Express
 2. MongoDB
+
+## Integrantes
+1. Beatriz Vitoria Matos da Silva
+2. Sthefany Souza da Silva

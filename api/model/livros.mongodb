@@ -1,0 +1,12 @@
+use ('FatecItu')
+
+db.livros.insertOne({
+    "titulo": "As vantagens de ser você",
+    "paginas": 350,
+    "data-publicacao": "18-07-2022",
+    "preco": 47.79,
+    "origem":{
+        "autora": "Ray Tavares",
+        "editora": "Galera"
+    }
+})
