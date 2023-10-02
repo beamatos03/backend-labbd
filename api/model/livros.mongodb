@@ -10,3 +10,27 @@ db.livros.insertOne({
         "editora": "Galera"
     }
 })
+
+use ('FatecItu')
+db.livros.insertOne({
+    "titulo": "Última parada",
+    "paginas": 400,
+    "data-publicacao": "18-01-2022",
+    "preco": 59.90,
+    "origem":{
+        "autora": "Casey McQuiston",
+        "editora": "Seguinte"
+    }
+})
+
+use ('FatecItu')
+db.livros.insertOne({
+    "titulo": "Princesas mortas não se apaixonam",
+    "paginas": 556,
+    "data-publicacao": "26-05-2023",
+    "preco": 39.90,
+    "origem":{
+        "autora": "Raíssa Selvaticci",
+        "editora": "Outro Planeta"
+    }
+})
