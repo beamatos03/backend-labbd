@@ -1,0 +1,55 @@
+//TESTE DAS REQUISIÇÕES
+@baseURL = http://localhost:4000/api/livros
+
+//GET - Lista todos os registros
+GET {{baseURL}}
+Content-Type: application/json
+
+
+###
+//GET - lista um registro pelo id
+GET {{baseURL}}/id/651a3c1ba13f50cd7d2f8190
+
+###
+//GET - lista registros com filtro
+GET {{baseURL}}/data
+Content-Type: application/json
+
+###
+//DELETE - apaga o registro pelo ID
+DELETE {{baseURL}}/651a3c1ba13f50cd7d2f8190
+Content-Type: application/json
+
+
+###
+//POST insere um novo registro
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+"titulo": "Ela fica com a garota",
+    "paginas": 368,
+    "preco": 29.99,
+    "data-publicacao": "18-06-2022",
+    "origem":{
+    "autora": "Rachael Lippincott",
+    "editora": "Alt"
+}}
+
+
+
+###
+//PUT - Altera o registro
+PUT {{baseURL}}
+Content-Type: application/json
+
+{
+    "_id": "651a3c1ba13f50cd7d2f8190",
+    "titulo": "Ela fica com a garota",
+    "paginas": 368,
+    "preco": 29.99,
+    "data-publicacao": "18-06-2022",
+    "origem":{
+    "autora": "Rachael Lippincott",
+    "editora": "Alt"
+}}
