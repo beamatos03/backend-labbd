@@ -9,13 +9,44 @@ const nomeCollection = 'livros'
 
 
 const validaLivro = [
-    check('titulo')
-    .not().isEmpty().trim().withMessage('É obrigatório informar o titulo!')
-    .isLength({min:2}).withMessage('O titulo deve conter ao menos 2 caracteres')
-    .isLength({max:200}).withMessage('A razão é muito longa.'),
-    check('paginas').not().isEmpty().trim().withMessage('Por favor informe o número de páginas contidas')
-    .isNumeric().withMessage('Por favor informe o número de páginas')
-]
+    check("titulo")
+    .not()
+    .isEmpty()
+    .trim()
+    .withMessage("É obrigatório informar o título do livro"),
+    check("paginas")
+    .isInt({ min: 1 })
+    .withMessage("O número de páginas deve ser um número inteiro maior que zero"),
+
+    check("data-publicacao")
+    .not()
+    .isEmpty()
+    .trim()
+    .withMessage("É obrigatório informar a data de publicação do livro")
+    .custom((value) => {
+    
+    const regexDate = /^\d{2}-\d{2}-\d{4}$/;
+    if (!regexDate.test(value)) {
+        throw new Error("Formato de data inválido. Use o formato dd-mm-yyyy.");
+    }
+    
+    return true;
+}),
+        
+        check("preco")
+        .isNumeric()
+        .withMessage("O preço deve ser um valor numérico"),
+    
+        check("origem")
+        .isObject().withMessage("O campo 'origem' deve ser um objeto")
+        .custom((value) => {
+            if (!value.autora || !value.editora) {
+                throw new Error("O campo 'origem' deve conter 'autora' e 'editora'.");
+            }
+            return true;
+        }),
+    ]
+
 
 /**
  * GET /api/livros
