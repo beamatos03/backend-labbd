@@ -7,6 +7,7 @@ const router = express.Router()
 const {db, ObjectId} = await connectToDatabase()
 const nomeCollection = 'livros'
 
+import auth from '../middleware/auth.js'
 
 const validaLivro = [
     check("titulo")
