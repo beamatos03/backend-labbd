@@ -5,6 +5,8 @@ const port = 4000
 
 // import das rotas da app
 import rotasLivros from './routes/livros.js'
+import rotasUsuarios from './routes/usuario.js'
+
 
 //app.use(express.urlencoded({ extended: true}))
 app.use(express.json()) // parse de arquivos JSON
