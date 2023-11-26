@@ -19,14 +19,13 @@ const validaLivro = [
     .isInt({ min: 1 })
     .withMessage("O número de páginas deve ser um número inteiro maior que zero"),
 
-    check("data-publicacao")
+    check("data_publicacao")
     .not()
     .isEmpty()
     .trim()
     .withMessage("É obrigatório informar a data de publicação do livro")
     .custom((value) => {
-    
-    const regexDate = /^\d{2}-\d{2}-\d{4}$/;
+    const regexDate = /^\d{2}\/\d{2}\/\d{4}$/;
     if (!regexDate.test(value)) {
         throw new Error("Formato de data inválido. Use o formato dd-mm-yyyy.");
     }
@@ -53,7 +52,7 @@ const validaLivro = [
  * GET /api/livros
  * Lista todos os livros
  */
-router.get('/', async(req, res) => {
+router.get('/', auth, async(req, res) => {
     try{
         db.collection(nomeCollection).find().sort({titulo: 1}).toArray((err, docs) => {
             if(!err){
@@ -76,7 +75,7 @@ router.get('/', async(req, res) => {
  * GET /api/livros/id/:id
  * Lista todos os livros
  */
-router.get('/id/:id', async(req, res) => {
+router.get('/id/:id', auth, async(req, res) => {
     try{
         db.collection(nomeCollection).find({'_id': {$eq: ObjectId(req.params.id)}}).toArray((err,docs) => {
             if(err){
@@ -90,11 +89,33 @@ router.get('/id/:id', async(req, res) => {
     }
 })
 
+
+/**
+ * GET /api/livros/titulo/:titulo
+ * Lista os livros de serviço pelo titulo
+ */
+router.get('/titulo/:titulo', auth, async(req, res)=> {
+    try{
+        db.collection(nomeCollection)
+        .find({'titulo': {$regex: req.params.titulo, $options: "i"}})
+        .toArray((err, docs) => {
+            if(err){
+                res.status(400).json(err)
+            } else {
+                res.status(200).json(docs)
+            }
+        })
+    } catch (err) {
+        res.status(500).json({"error": err.message})
+    }
+})
+
+
 /**
  * DELETE /api/livros/:id
  * Apaga o livro pelo id
  */
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', auth, async(req, res) => {
     await db.collection(nomeCollection).deleteOne({"_id": {$eq: ObjectId(req.params.id)}}).then(result => res.status(200).send(result)).catch(err => res.status(400).json(err))
 }) 
 
@@ -103,7 +124,7 @@ router.delete('/:id', async(req, res) => {
  * POST /api/livros/
  * Insere um novo livro
  */
-router.post('/', validaLivro, async(req, res) => {
+router.post('/', auth, validaLivro, async(req, res) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
         return res.status(400).json(({
@@ -122,7 +143,7 @@ router.post('/', validaLivro, async(req, res) => {
  * PUT /api/livros/
  * Altera um livro
  */
-router.put('/', validaLivro, async(req, res) => {
+router.put('/', auth, validaLivro, async(req, res) => {
     let idDocumento = req.body._id //armazenanondo o id do item
     delete req.body._id //iremos remover oid do body
     const errors = validationResult(req)
@@ -148,11 +169,11 @@ GET /api/livros/data
 Lista todos os livros publicados em  2022 com o numero de paginas entre 100 e 360
 
  */
-router.get('/data', async (req, res) => {
+router.get('/data', auth, async (req, res) => {
     try {
         db.collection(nomeCollection).find({ $and:[
             {'paginas': { $gte: 350, $lte: 500}}, // Filtrar por paginas menores que 500 e maiores que 360
-            {'data-publicacao': /2022$/i}
+            {'data_publicacao': /2022$/i}
         ]
 
         }).toArray((err, docs) => {

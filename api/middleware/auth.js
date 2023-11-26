@@ -8,11 +8,7 @@ export default async function auth(req, res, next){
     })              
     try {
         const decoded = jwt.verify(token, process.env.SECRET_KEY)
-        /* O decoded irá conter:
-           usuário (payload do usuario)
-           exp (expiration) - Data de expiração
-           iat (issued at)  - Data de criação
-        */
+
        req.usuario = await decoded.usuario
        next() //direcionamos para o endpoint
     } catch (e){
