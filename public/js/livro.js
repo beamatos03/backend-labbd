@@ -55,6 +55,7 @@ async function salvaLivro(livro) {
                     alert('✔ Livro alterado com sucesso!')
                     //Limpar o formulário
                     document.getElementById('formLivro').reset()
+                    location.reload()
                     //Atualiza a UI
                     carregaLivros()
                 } else if (data.errors) {

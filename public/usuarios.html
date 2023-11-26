@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Livros</title>
+    <title>Usuarios</title>
 
     <!-- Bootstrap 5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,19 +14,20 @@
     <!-- Para consultar a lista de ícones, acesse: https://icons.getbootstrap.com/ -->
     <!-- CSS -->
     <link href="images/computer.png" rel="icon" type="image/png" />
-   
+
     <link rel="icon" type="image/png" href="images/computador.png" />
 
 </head>
 
+<body onload="carregaUsers()">
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #0066cc;">
         <a class="navbar-brand mx-2" href="#">Biblioteca Virtual</a>
         <div class="navbar-collapse justify-content-between">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="livros.html">Livros</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="usuarios.html">Usuários</a>
                 </li>
             </ul>
@@ -39,75 +40,14 @@
     </nav>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <!-- Formulário -->
-                <h4 class="text-primary mt-3">Cadastro de Livros</h4>
-                <form id="formLivro" method="post" class="shadow-lg p-3">
-                    <!-- Id -->
-                    <input type="hidden" id="id" name="id" />
-                    <!-- Título -->
-                    <div class="mb-3">
-                        <label for="titulo" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título do Livro"
-                            autofocus />
-                    </div>
-                    <!-- Número de páginas e Data de publicação -->
-                    <div class="mb-3 row">
-                        <div class="col-md-3">
-                            <label for="paginas" class="form-label">Nº de páginas</label>
-                            <input type="number" class="form-control" id="paginas" name="paginas" min="0"
-                                placeholder="Nº de pág."/>
-                        </div> 
-                        <div class="col-md-3">
-                            <label for="preco" class="form-label">Preço</label>
-                            <input type="text" class="form-control" id="preco" name="preco" min="0"
-                                placeholder="Preço" />
-                        </div> 
-                        <div class="col-md-6">
-                            <label for="publicacao" class="form-label">Data de Publicação</label>
-                            <input type="text" class="form-control" id="publicacao" name="publicacao" required>
-                        </div> 
-                    </div> 
-                    <!-- Autora e Editora -->
-                    <div class="mb-3 row">
-                        <div class="col-md-6">
-                            <label for="autora" class="form-label">Autor(a)</label>
-                            <input type="text" class="form-control" id="autora" name="autor" 
-                                required placeholder="Nome do autor(a)" />
-                        </div> 
-                        <div class="col-md-6">
-                            <label for="editora" class="form-label">Editora</label>
-                            <input type="text" class="form-control" id="editora" name="editora" required placeholder="Nome da editora">
-                        </div> 
-                    </div> 
-                    <!-- Botões-->
-                    <div class="my-5">
-                        <button class="btn btn-success" id="salvar" type="submit">
-                            <i class="bi bi-save"></i> Salvar
-                        </button>
-                        <button class="btn btn-danger" id="limpar" type="reset">
-                            <i class="bi bi-x"></i> Limpar
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <img src="images/Readingbook-pana.svg" title="Leitores" class="img w-50 mx-auto mt-5" />
-            </div>
-        </div>
         <div class="row mb-5">
             <div class="col-md-12">
-                <h4 class="text-primary mt-3">Relação dos Livros Cadastrados </h4>
+                <h4 class="text-primary mt-3">Relação dos Usuarios Cadastrados </h4>
                 <table class="table table-bordered shadow-lg">
                     <thead>
                         <tr class="table-primary">
-                            <th>Título</th>
-                            <th>Número de páginas</th>
-                            <th>Data de publicação</th>
-                            <th>Preço</th>
-                            <th>Autor(a)</th>
-                            <th>Editora</th>
+                            <th>Nome</th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     <tbody id="dadosTabela"></tbody>
@@ -130,17 +70,12 @@
         </div>
     </div>
     <!-- Rodapé -->
-    <footer class="text-white text-center py-2" style="background-color: #0066cc;">
+    <footer class="text-white text-center position-fixed fixed-bottom py-2" style="background-color: #0066cc;">
         &copy; 2023. Todos os direitos reservados.
     </footer>
     <!-- JS -->
     <script src="js/validatoken.js"></script>
-    <script src="js/livro.js"></script>
-    <script src= "https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-    <script>
-    $('#publicacao').mask('00/00/0000');
-    </script>
+    <script src="js/usuario.js"></script>
 
 </body>
 
