@@ -10,11 +10,11 @@ import rotasUsuarios from './routes/usuario.js'
 
 
 app.use(cors({
-    origin: ['http/127.0.0.1:5500', 'https://backend-mongodb-pi.vercel.app']
+    origin: ['http/127.0.0.1:5500', 'http://localhost:400']
 }))
 
-//app.use(express.urlencoded({ extended: true}))
-app.use(express.json()) // parse de arquivos JSON
+app.use(express.urlencoded({ extended: true}))
+//app.use(express.json()) // parse de arquivos JSON
 
 // Rotas de conteúdo público
 app.use('/', express.static('public'))
