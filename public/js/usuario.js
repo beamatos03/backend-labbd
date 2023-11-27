@@ -1,5 +1,5 @@
 //const urlBase = 'https://backend-mongodb-pi.vercel.app/api'
-const urlBase = 'https://backend-labbd-q7vnsbqmr-beamatos03.vercel.app/api'
+const urlBase = 'https://backend-labbd-git-main-beamatos03.vercel.app/api'
 const resultadoModal = new bootstrap.Modal(document.getElementById("modalMensagem"))
 const access_token = localStorage.getItem("token") || null
 
