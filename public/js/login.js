@@ -1,5 +1,5 @@
 //const urlBase = 'https://backend-mongodb-pi.vercel.app/api'
-const urlBase = 'https://backend-labbd-git-main-beamatos03.vercel.app/api'
+const urlBase = 'https://backend-labbd.vercel.app/api'
 document.getElementById("loginForm").addEventListener("submit", function (event) {
     event.preventDefault()
     const login = document.getElementById("login").value
