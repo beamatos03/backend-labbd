@@ -10,7 +10,7 @@ import rotasUsuarios from './routes/usuario.js'
 
 
 app.use(cors({
-    origin: ['http/127.0.0.1:5500', 'http://localhost:400']
+    origin: ['http/127.0.0.1:5500', 'https://backend-labbd-q7vnsbqmr-beamatos03.vercel.app']
 }))
 
 app.use(express.urlencoded({ extended: true}))
