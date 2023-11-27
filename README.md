@@ -34,4 +34,4 @@ npm i cors
 2. Sthefany Souza da Silva
 
 ## ❗ Link para visualização
-https://prj-backend-labbd.vercel.app
+https://backend-labbd.vercel.app
