@@ -14,8 +14,8 @@ app.use(cors({
     
 }))
 
-app.use(express.urlencoded({ extended: true}))
-//app.use(express.json()) // parse de arquivos JSON
+//app.use(express.urlencoded({ extended: true}))
+app.use(express.json()) // parse de arquivos JSON
 
 // Rotas de conteúdo público
 app.use('/', express.static('public'))
