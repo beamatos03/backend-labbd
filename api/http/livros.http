@@ -1,6 +1,6 @@
 //TESTE DAS REQUISIÇÕES
 //@baseURL = http://localhost:4000/api/livros
-@baseURL  = https://backend-labbd-q7vnsbqmr-beamatos03.vercel.app/livros
+@baseURL  = https://backend-labbd.vercel.app/api/livros
 
 //GET - Lista todos os registros
 GET {{baseURL}}
